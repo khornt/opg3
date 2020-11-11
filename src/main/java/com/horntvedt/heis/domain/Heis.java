@@ -83,6 +83,7 @@ public class Heis {
     public int leggTilStopp(int etasje) {
 
         //todo: må sorteres
+        //todo: sette retning på heis
         List<Integer> stoppliste  = this.heiskoe.getStoppliste();
 
         if (!stoppliste.contains(etasje)) {
