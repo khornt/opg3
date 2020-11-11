@@ -24,8 +24,8 @@ public class Heis {
     @JsonProperty(value = "hastighet")
     int sekunderEtasje;
 
-    @JsonProperty(value = "heistur")
-    HeisTur heisTur;
+    @JsonProperty(value = "heiskoe")
+    Heiskoe heiskoe;
 
     public Heis(int hastighet, String id) {
 
@@ -34,7 +34,7 @@ public class Heis {
         tilstand = Heistilstand.LEDIG;
         etasje = 1;
         sekunderEtasje = hastighet; //heisen hastighet
-        heisTur = new HeisTur();
+        heiskoe = new Heiskoe(); //todo: To køer, en for opp og en for ned?
 
     }
 
@@ -75,15 +75,15 @@ public class Heis {
 
     private void turUtfoert(int etasje) {
 
-        List<Integer> stoppliste  = this.heisTur.getStoppliste();
+        List<Integer> stoppliste  = this.heiskoe.getStoppliste();
         stoppliste.remove(stoppliste.indexOf(etasje));
 
     }
 
     public int leggTilStopp(int etasje) {
 
-        List<Integer> stoppliste  = this.heisTur.getStoppliste();
-
+        //todo: må sorteres
+        List<Integer> stoppliste  = this.heiskoe.getStoppliste();
 
         if (!stoppliste.contains(etasje)) {
             stoppliste.add(etasje);
@@ -105,6 +105,4 @@ public class Heis {
             return (etasje - angittEtasje) * this.sekunderEtasje;
         }
     }
-
-
 }

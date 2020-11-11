@@ -2,11 +2,10 @@ package com.horntvedt.heis.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class HeisTur {
+public class Heiskoe {
 
 
     @JsonProperty(value = "stopper")
@@ -14,6 +13,7 @@ public class HeisTur {
 
     private int tilEtasje;
 
+    //todo: Dele stoppliste i to retninger?
     public List<Integer> getStoppliste() {
 
         if (stoppliste == null) {
