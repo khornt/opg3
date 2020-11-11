@@ -1,7 +1,0 @@
-com\horntvedt\heis\service\HeisService.class
-com\horntvedt\heis\domain\HeisTur.class
-com\horntvedt\heis\config\HeiskontrollerConfig.class
-com\horntvedt\heis\domain\Heis.class
-com\horntvedt\heis\controller\heisController.class
-com\horntvedt\heis\Application.class
-com\horntvedt\heis\state\Heistilstand.class
