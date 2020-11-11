@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.horntvedt.heis.state.Heistilstand;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
@@ -25,9 +24,8 @@ public class Heis {
     @JsonProperty(value = "hastighet")
     int sekunderEtasje;
 
-    @JsonProperty(value = "stopper")
-    List<Integer> stoppliste;
-
+    @JsonProperty(value = "heistur")
+    HeisTur heisTur;
 
     public Heis(int hastighet, String id) {
 
@@ -36,7 +34,7 @@ public class Heis {
         tilstand = Heistilstand.LEDIG;
         etasje = 1;
         sekunderEtasje = hastighet; //heisen hastighet
-        stoppliste = new ArrayList<>();
+        heisTur = new HeisTur();
 
     }
 
@@ -70,11 +68,22 @@ public class Heis {
 
         int tid = tidTilGittEtasje(tilEtasje);
         etasje = tilEtasje;
+
         return tid;
 
     }
 
+    private void turUtfoert(int etasje) {
+
+        List<Integer> stoppliste  = this.heisTur.getStoppliste();
+        stoppliste.remove(stoppliste.indexOf(etasje));
+
+    }
+
     public int leggTilStopp(int etasje) {
+
+        List<Integer> stoppliste  = this.heisTur.getStoppliste();
+
 
         if (!stoppliste.contains(etasje)) {
             stoppliste.add(etasje);
